@@ -1,7 +1,10 @@
 <template>
   <div class="">
     <h2>TESTEEEE</h2>
-    <p v-if="$fetchState.pending">
+    <ul v-for="(mountain, i) of mountains" :key="i">
+      <li>{{ mountain.title }}</li>
+    </ul>
+    <!-- <p v-if="$fetchState.pending">
       Buscando montanhas...
     </p>
     <p v-else-if="$fetchState.error">
@@ -13,27 +16,27 @@
         <li>{{ mountain.title }}</li>
       </ul>
       <button @click="$fetch">Recarregar</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
+import { getters } from "../store/vuex.js"
 export default {
-  data() {
+  data () {
     return {
       mountains: []
     }
   },
-  async fetch () {
-    this.mountains = await fetch(
-      // 'https://api.nuxtjs.dev/mountains'
-      'https://api.json-generator.com/templates/RJ2IEMY493l2/data?delay=10000', {
-        headers: {
-          Authorization: 'Bearer xu9qp8s43xiy72hlac4m1i5mtoshkpagkmhfhngx',
-          'Content-Type': 'application/json'
-        }
-      }
-    ).then(res => res.json())
+  // watch () {
+  //   this.render
+  // },
+  created () {
+    // console.log('❤', this.$store.getters.vuex)
+    // const pipoca = this.$store.getters
+
+    // console.log('🍿', pipoca, this.$store.state.vuex)
+    console.log('🎈', getters.myList())
   }
 }
 </script>

@@ -35,16 +35,20 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    // https://http.nuxtjs.org/
+    '@nuxt/http'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  // axios: {
-  //   headers: {
-  //     Authorization: 'Bearer xu9qp8s43xiy72hlac4m1i5mtoshkpagkmhfhngx',
-  //     'Content-Type': 'application/json'
-  //   }
-  // },
+  axios: {
+    headers: {
+      Authorization: 'Bearer xu9qp8s43xiy72hlac4m1i5mtoshkpagkmhfhngx',
+      'Content-Type': 'application/json'
+    }
+  },
+
+  serverMiddleware: ['~/serverMiddleware/selectiveSSR.js'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
